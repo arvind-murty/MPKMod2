@@ -108,7 +108,6 @@ public class Minecraft {
     }
 
     public static boolean setInputs(Float yaw, boolean relYaw, Float pitch, boolean relPitch, int pressedInputs, int releasedInputs, int L, int R) {
-        if (!Minecraft.isSingleplayer()) return false;
         if (!Interface.get().isPresent()) {
             API.LOGGER.info(API.COMPATIBILITY_MARKER, "Failed to set inputs, are you playing on an unsupported minecraft version?");
             return false;

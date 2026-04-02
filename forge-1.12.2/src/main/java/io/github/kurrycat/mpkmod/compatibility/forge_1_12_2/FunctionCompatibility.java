@@ -385,7 +385,6 @@ public class FunctionCompatibility implements FunctionHolder,
     }
 
     public boolean setInputs(Float yaw, boolean relYaw, Float pitch, boolean relPitch, int pressedInputs, int releasedInputs, int L, int R) {
-        if (!io.github.kurrycat.mpkmod.compatibility.MCClasses.Minecraft.isSingleplayer()) return false;
         EntityPlayerSP player = Minecraft.getMinecraft().player;
         GameSettings gs = Minecraft.getMinecraft().gameSettings;
 
@@ -400,6 +399,12 @@ public class FunctionCompatibility implements FunctionHolder,
             player.rotationPitch = relPitch ? (float) ((double) player.rotationPitch - (double) pitch) : pitch;
             player.rotationPitch = MathHelper.clamp(player.rotationPitch, -90.0F, 90.0F);
             player.prevRotationPitch += player.rotationPitch - prevPitch;
+        }
+        boolean smoothCamera = (yaw != null || pitch != null) && (!relYaw || !relPitch);
+        if (smoothCamera) {
+            CameraSmoothing.updateTarget(player.rotationYaw, player.rotationPitch);
+        } else {
+            CameraSmoothing.disable();
         }
 
         int[] keys = new int[]{

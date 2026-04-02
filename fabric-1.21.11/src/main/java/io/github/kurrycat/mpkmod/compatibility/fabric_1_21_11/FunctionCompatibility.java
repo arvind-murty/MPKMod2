@@ -347,7 +347,6 @@ public class FunctionCompatibility implements FunctionHolder,
     }
 
     public boolean setInputs(Float yaw, boolean relYaw, Float pitch, boolean relPitch, int pressedInputs, int releasedInputs, int L, int R) {
-        if (!Minecraft.isSingleplayer()) return false;
         LocalPlayer player = net.minecraft.client.Minecraft.getInstance().player;
         if (player == null) return false;
         Options op = net.minecraft.client.Minecraft.getInstance().options;

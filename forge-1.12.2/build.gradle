@@ -26,6 +26,7 @@ unimined.minecraft {
 
 dependencies {
     implementation "com.github.MPKMod.MPKNetworkAPI:common:${project.networkApiVersion}"
+    implementation "org.spongepowered:mixin:0.8.5"
 }
 
 processResources {

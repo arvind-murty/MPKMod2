@@ -58,6 +58,8 @@ public class Player {
     public int sidestep = -1;
     public boolean wadStart = false;
     public boolean flying = false;
+    public Vector3D lookingAt = null;
+    public String lookingAtBlock = "";
 
     @InfoString.Getter
     public static LandingBlock getLatestLB() {
@@ -225,6 +227,16 @@ public class Player {
         return grinds;
     }
 
+    @InfoString.Getter
+    public Vector3D getLookingAt() {
+        return lookingAt;
+    }
+
+    @InfoString.Getter
+    public String getLookingAtBlock() {
+        return lookingAtBlock;
+    }
+
     @SuppressWarnings("UnusedReturnValue")
     public Player buildAndSave() {
         Player prev = getLatest();
@@ -325,6 +337,9 @@ public class Player {
             sidestep = prev.airtime;  // WAD
             wadStart = false;
         }
+
+        lookingAt = WorldInteraction.getLookingAt();
+        lookingAtBlock = WorldInteraction.getLookingAtBlock();
 
         Player.updateDisplayInstance();
         return this;

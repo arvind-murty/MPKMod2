@@ -14,6 +14,7 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.client.event.MouseEvent;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -143,6 +144,12 @@ public class EventListener {
     @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
     public void onRenderWorld(RenderWorldLastEvent e) {
         API.Events.onRenderWorldOverlay(e.partialTicks);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void onCameraSetup(EntityViewRenderEvent.CameraSetup event) {
+        CameraSmoothing.apply(event);
     }
 
     @SideOnly(Side.CLIENT)

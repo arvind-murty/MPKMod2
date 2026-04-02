@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.kurrycat.mpkmod.compatibility.forge_1_8.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "EntityRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

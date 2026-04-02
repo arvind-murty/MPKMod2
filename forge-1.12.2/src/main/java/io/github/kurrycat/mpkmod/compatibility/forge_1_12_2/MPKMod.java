@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Mod(
-        modid = API.MODID,
+        modid = MPKMod.MODID,
         version = API.VERSION,
         name = API.NAME,
         acceptedMinecraftVersions = "*"//,
@@ -29,6 +29,7 @@ import java.util.Map;
 )
 public class MPKMod {
     //public static final String GUI_FACTORY = "io.github.kurrycat.mpkmod.config.GuiFactory";
+    public static final String MODID = "mpkmod2";
 
     public static Map<String, KeyBinding> keyBindingMap = new HashMap<>();
     public static final MPKForgeNetworking FORGE_NETWORKING = new MPKForgeNetworking();
